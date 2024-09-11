@@ -13,6 +13,58 @@ export class LoginPage {
         this.page = page
         this.signinButton = page.locator('.user-info')
         this.emailField = page.locator('#field-email')
+/**
+ * Different ways to identify locators
+ * By Tag Name
+ * page.locator('input')
+ * 
+ * By ID
+ * page.locator('#field-email')
+ * 
+ * By Class value
+ * page.locator('.form-control')
+ * 
+ * By Attribute
+ * page.locator('[name="email"]')
+ * 
+ * By full class value
+ * page.locator('[class="form-control"]')
+ * 
+ * Combine different selectors
+ * page.locator('input[name="email"][type="email"]')
+ * 
+ * By partial text match
+ * page.locator(':text("Email")')
+ * 
+ * By exact text match
+ * page.locator(':text-is("Email")')
+ * 
+ * User Facing Locators:
+ * 
+ * By Role
+ * page.getByRole('textbox', { name: 'Email' })
+ * 
+ * By Label
+ * page.getByLabel('Email')
+ * 
+ * By Placeholder
+ * page.getByPlaceholder('Enter your email')
+ * 
+ * By Title
+ * page.getByTitle('email input field')
+ * 
+ * By TestID
+ * page.getByTestId('emailInput')
+ * 
+ * Chaining Parent and Child Locators 
+ * page.locator('form').locator('input[type="email"]')
+ * page.locator('form').getByRole('textbox', { name: 'Email' })
+
+ * 
+ * 
+ */
+
+
         this.passwordField = page.locator('#field-password')
         this.submitButton = page.locator('#submit-login')
     }
