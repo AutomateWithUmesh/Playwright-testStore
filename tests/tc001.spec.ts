@@ -35,7 +35,21 @@ test.describe('Application Tests TC001', () => {
         await globalMenu.searchItem(testData.searchText)
     });
 
-    test.afterEach(async ({ page }) => {
+    test.afterEach(async ({ page }, testInfo) => {
+        if (testInfo.status !== 'passed') {
+            // Capture screenshot if the test failed
+            const screenshotPath = `./screenshots/${testInfo.title.replace(/\s+/g, '_')}.png`;
+            await page.screenshot({ path: screenshotPath, fullPage: true });
+            console.log(`Screenshot taken for failed test: ${screenshotPath}`);
+            
+            // Optionally, attach the screenshot to the test report
+            testInfo.attachments.push({
+                name: 'screenshot',
+                path: screenshotPath,
+                contentType: 'image/png'
+            });
+        }
+        // Sign out after each test
         await globalHeader.signOut()
     })
 })
