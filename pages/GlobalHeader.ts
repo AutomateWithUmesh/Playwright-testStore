@@ -1,7 +1,7 @@
 import { Locator, Page } from '@playwright/test';
-import { BasePagePW } from './BasePagePW';
+import { BasePage } from './BasePage';
 
-export class GlobalHeaderPW extends BasePagePW{
+export class GlobalHeader extends BasePage{
 
     readonly signoutButton: Locator
 

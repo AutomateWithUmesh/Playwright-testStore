@@ -1,6 +1,6 @@
 import { Page } from '@playwright/test';
 
-export class GlobalMenuPW {
+export class ClothesWomenPage {
 
     private page: Page;
 

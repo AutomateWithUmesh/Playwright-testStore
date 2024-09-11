@@ -1,13 +1,13 @@
 import { test, expect } from '@playwright/test';
-import { LoginPagePW } from '../src/main/java/com/umesh/test_store_playwright/pages/LoginPagePW';
-import { GlobalMenuPW } from '../src/main/java/com/umesh/test_store_playwright/pages/GlobalMenuPW';
-import { GlobalHeaderPW } from '../src/main/java/com/umesh/test_store_playwright/pages/GlobalHeaderPW';
+import { LoginPage } from '../pages/LoginPage';
+import { GlobalMenu } from '../pages/GlobalMenu';
+import { GlobalHeader } from '../pages/GlobalHeader';
 import Config from '../util/Config'
 import * as fs from 'fs'
 
-let loginPage: LoginPagePW
-let globalMenu: GlobalMenuPW
-let globalHeader: GlobalHeaderPW
+let loginPage: LoginPage
+let globalMenu: GlobalMenu
+let globalHeader: GlobalHeader
 
 Config.initialize()
 const testData = JSON.parse(fs.readFileSync('./test-data/tc001.json', 'utf-8'));
@@ -20,9 +20,9 @@ test.describe('Application Tests TC001', () => {
             throw new Error('URL not defined in the configuration.');
         }
         await page.goto(url)
-        loginPage = new LoginPagePW(page)
-        globalMenu = new GlobalMenuPW(page)
-        globalHeader = new GlobalHeaderPW(page)
+        loginPage = new LoginPage(page)
+        globalMenu = new GlobalMenu(page)
+        globalHeader = new GlobalHeader(page)
     })
 
     test('login to application', async ({ page }) => {
@@ -32,7 +32,7 @@ test.describe('Application Tests TC001', () => {
             throw new Error('Userame or Password not defined in the configuration.');
         }
         await loginPage.login(username, password);
-       await globalMenu.searchItem(testData.searchText)
+        await globalMenu.searchItem(testData.searchText)
     });
 
     test.afterEach(async ({ page }) => {

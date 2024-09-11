@@ -1,6 +1,6 @@
 import { Page } from '@playwright/test';
 
-export abstract class BasePagePW {
+export abstract class BasePage {
 
     protected page: Page;
 

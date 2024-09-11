@@ -1,7 +1,7 @@
 import { Locator, Page } from '@playwright/test';
-import { BasePagePW } from './BasePagePW';
+import { BasePage } from './BasePage';
 
-export class GlobalMenuPW extends BasePagePW{
+export class GlobalMenu extends BasePage{
 
     readonly clothesPageLink: Locator
     readonly myStoreLogo: Locator
@@ -10,10 +10,10 @@ export class GlobalMenuPW extends BasePagePW{
 
     constructor(page: Page) {
         super(page)
-        this.clothesPageLink = page.locator('selector-for-clothes-page')
-        this.myStoreLogo = page.locator('.logo')
-        this.searchTextBox = page.locator('.ui-autocomplete-input')
-        this.searchResult = page.locator('#js-product-list-header')
+        this.clothesPageLink = this.page.locator('selector-for-clothes-page')
+        this.myStoreLogo = this.page.locator('.logo')
+        this.searchTextBox = this.page.locator('.ui-autocomplete-input')
+        this.searchResult = this.page.locator('#js-product-list-header')
     }
 
     async isDisplayed(): Promise<boolean> {

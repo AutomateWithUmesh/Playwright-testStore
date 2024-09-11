@@ -1,7 +1,7 @@
 import { Locator, Page } from '@playwright/test';
-import { BasePagePW } from './BasePagePW';
+import { BasePage } from './BasePage';
 
-export class ClothesPagePW extends BasePagePW{
+export class ClothesPage extends BasePage{
 
     readonly clotheSection: Locator
     readonly menSection: Locator
