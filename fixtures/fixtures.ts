@@ -1,5 +1,5 @@
 import { test as baseTest } from '@playwright/test';
-import { LoginPage } from '../pages/LoginPage';
+import { LoginPage } from '../pages/loginPage';
 import Config from '../util/Config';
 import Logger from '../util/Logger';
 

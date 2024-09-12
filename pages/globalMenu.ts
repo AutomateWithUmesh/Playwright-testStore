@@ -1,5 +1,5 @@
 import { Locator, Page } from '@playwright/test';
-import { BasePage } from './BasePage';
+import { BasePage } from './basePage';
 
 export class GlobalMenu extends BasePage{
 
@@ -22,7 +22,8 @@ export class GlobalMenu extends BasePage{
 
     async goToClothesPage() {
         // Logic to navigate to Clothes Page
-        await this.clothesPageLink.click() // Replace with actual selector
+        await this.clothesPageLink.click()
+        await this.waitForNumberOfSeconds(2) //helper method from BasePage class
       }
 
     async clickMyStoreLogo() {

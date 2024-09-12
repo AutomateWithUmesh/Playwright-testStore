@@ -10,4 +10,8 @@ export abstract class BasePage {
 
     abstract isDisplayed(): Promise<boolean>;
 
+    async waitForNumberOfSeconds(timeInSeconds: number) {
+        await this.page.waitForTimeout(timeInSeconds * 1000)
+    }
+
 }
