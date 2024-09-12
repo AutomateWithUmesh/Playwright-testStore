@@ -7,12 +7,14 @@ export class LoginPage {
     readonly emailField: Locator
     readonly passwordField: Locator
     readonly submitButton: Locator
+    readonly signoutButton: Locator
        
 
     constructor(page: Page) {
         this.page = page
         this.signinButton = page.locator('.user-info')
         this.emailField = page.locator('#field-email')
+        this.signoutButton = this.page.locator('[class="logout hidden-sm-down"]')
 /**
  * Different ways to identify locators
  * By Tag Name
@@ -81,7 +83,7 @@ export class LoginPage {
     }
 
     async isDisplayed(): Promise<boolean> {
-        return await this.page.locator('header').isVisible()
+        return await this.signoutButton.isVisible()
     }
 
 }

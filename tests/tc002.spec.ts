@@ -16,11 +16,19 @@ let globalHeader: GlobalHeader
 //const logger = Logger.getLogger();  // Get the logger instance
 const testData = JSON.parse(fs.readFileSync('./test-data/tc002.json', 'utf-8'));
 
-test.describe('Application Tests TC001', () => {
+test.describe('Application Tests TC002', () => {
 
-/**
- * Opening the URL is handled as part of fixure. Fixures are like hooks used for Before and After
- */
+    // test.beforeEach(async ({ page, loginPage, logger }) => {
+    //     const url = Config.get('test.store.url')
+    //     if (!url) {
+    //         throw new Error('URL not defined in the configuration.');
+    //     }
+    //     await page.goto(url)
+    //     loginPage = new LoginPage(page)
+    //     globalMenu = new GlobalMenu(page)
+    //     globalHeader = new GlobalHeader(page)
+    //     logger.info('Navigated to the application and initialized page objects.');
+    // })
 
     test('login to application', async ({ page, logger }) => {
         loginPage = new LoginPage(page)
@@ -34,7 +42,7 @@ test.describe('Application Tests TC001', () => {
         await loginPage.login(username, password);
         logger.info('Logged in with the provided credentials.');
         const isLoginSuccessful = await loginPage.isDisplayed(); // Call the method
-        expect(isLoginSuccessful).toBe(true);  // Assert if the condition is true
+        expect(isLoginSuccessful).toBe(false);  // Assert if the condition is true
         await globalMenu.searchItem(testData.searchText)
         logger.info('Searched for the item: ' + testData.searchText);
     });

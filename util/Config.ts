@@ -1,20 +1,9 @@
 import PropertiesReader from 'properties-reader';
 import * as fs from 'fs';
 import * as path from 'path';
-import winston from 'winston';
+import Logger from './Logger'; 
 
-// Logger setup using winston
-const logger = winston.createLogger({
-    level: 'info',
-    format: winston.format.combine(
-        winston.format.colorize(),
-        winston.format.simple()
-    ),
-    transports: [
-        new winston.transports.Console(),
-        new winston.transports.File({ filename: 'logs/config.log' })
-    ]
-});
+const logger = Logger.getLogger();  // Get the logger instance
 
 class Config {
     private static properties: any;
